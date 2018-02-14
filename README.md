@@ -1,26 +1,28 @@
 # ember-cli-bootstrap-4-components
 
-This README outlines the details of collaborating on this Ember addon.
+This addon provides bootstrap components for use in your ember applications.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-cli-bootstrap-4-components`
-* `npm install`
+* ember install ember-cli-bootstrap-4-components
 
-## Running
+### Usage
+Insert components in your templates where necessary.
+### Available components
+* Modal
+    ```handlebars
+    {{#bs-modal}}
+        <div class="modal-header>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+        </div>
+    {{/bs-modal}}
+    ```
+    Modals can be made to open by default by setting the property `autoload` to true.
+    **Note: Bootstrap does not allow multiple modals by default, so care has to be taken while using the autoload property.**
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
 
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+## To do
+* Add more components
