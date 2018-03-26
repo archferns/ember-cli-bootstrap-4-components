@@ -1,5 +1,18 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
-    {{yield}}
+    {{#if (has-block)}}
+      {{yield}}
+    {{else}}
+      <div class="modal-header">
+        <h5 class="modal-title">{{modalTitle}}</h5>
+        <button type="button" class="close" {{action 'triggerCloseModal'}} aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">{{{modalBody}}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" {{action 'triggerCloseModal'}}>Close</button>
+      </div>
+    {{/if}}
   </div>
 </div>

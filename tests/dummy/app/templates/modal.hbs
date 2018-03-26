@@ -1,0 +1,136 @@
+<div class="container">
+  <h3>Modals</h3>
+  <p>Modals can be created using the <code>\{{bs-modal}}</code> component</p>
+  <h4>Simple usage</h4>
+  <p>Supported properties:</p>
+  <ul>
+    <li>
+      <code>modalTitle</code> - define the modal title.
+    </li>
+    <li>
+      <code>modalBody</code> - define the modal content. May include HTML.
+    </li>
+  </ul>
+  <div class="highlight">
+<pre><code>
+  \{{bs-modal id="simpleModal" modalTitle="Hello" modalBody='Hi there!'}}
+  <br/>
+  &lt;!-- add a trigger --&gt;
+  &lt;button type="button" class="btn btn-primary" data-toggle="modal" data-target="#simpleModal"&gt;
+    Launch simple modal
+  &lt;/button&gt;
+</code>
+</pre>
+  </div>
+  <h4>Block usage</h4>
+  <p>In the block usage, you are expected to create the <code>modal-header</code>, <code>modal-body</code> and <code>modal-footer</code> as part of the block.</p>
+  <div class="highlight">
+<pre><code>
+  &lt;button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blockModal"&gt;
+    Launch block modal
+  &lt;/button&gt;
+  \{{#bs-modal id="blockModal"}}
+    &lt;div class="modal-header"&gt;
+      &lt;h5 class="modal-title"&gt;Modal title&lt;/h5&gt;
+      &lt;button type="button" class="close" data-dismiss="modal" aria-label="Close"&gt;
+        &lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Modal body text goes here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+      &lt;button type="button" class="btn btn-secondary" data-dismiss="modal"&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+  \{{/bs-modal}}
+</code>
+</pre>
+  </div>
+  <h4>Autoload</h4>
+  <p>This is useful to to create modal based views.</p>
+  <p>Note: Care must be taken not to open multiple modals using the <code>autoload</code> property, as Bootstrap does not support multiple modals.</p>
+  <p>Example usage</p>
+  <ol>
+    <li>
+      Generate a new route.<br/><code class="terminal">ember generate route modal-route</code>
+    </li>
+    <li>Add the component to the modal-route.hbs template. We can pass an action to the <code>closeModal</code> property to handle closing the modal.<br/>
+      <code>\{{bs-modal autoload=true closeModal=(action 'backToParentRoute')}}</code>
+    </li>
+    <li>
+      Generate a controller for the route.<br/><code class="terminal">ember generate controller modal-route</code>
+    </li>
+    <li>Define an action to handle closing the modal. (Preferably navigate the user back)<br/>
+      <code>app/controllers/modal-route.js</code>
+      <div class="highlight">
+        <pre><code>
+  import Controller from '@ember/controller';
+
+    export default Controller.extend({
+      actions: {
+        backToParentRoute(){
+          this.transitionToRoute('index');
+        }
+      }
+    });
+          </code></pre>
+      </div>
+    </li>
+  </ol>
+  <h5>Simple</h5>
+  <div class="highlight">
+<pre><code>
+  \{{bs-modal autoload=true closeModal=(action 'backToParentRoute')}}
+</code>
+</pre>
+  </div>
+  <h5>Block</h5>
+  <div class="highlight">
+<pre><code>
+  \{{#bs-modal autoload=true}}
+    &lt;div class="modal-header"&gt;
+      &lt;h5 class="modal-title"&gt;Modal title&lt;/h5&gt;
+      &lt;button type="button" class="close" aria-label="Close" \{{action 'backToParentRoute'}}&gt;
+        &lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Automatically loaded on initialization.&lt;/p&gt;
+      \{{outlet}}
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button type="button" class="btn btn-secondary" \{{action 'backToParentRoute'}}&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+  \{{/bs-modal}}
+  </code>
+</pre>
+  </div>
+  <div class="m-5">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#simpleModal">
+      Launch simple modal
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blockModal">
+      Launch block modal
+    </button>
+    {{#link-to 'modal.simple-autoload' class="btn btn-primary"}} Simple autoload {{/link-to}}
+    {{#link-to 'modal.block-autoload' class="btn btn-primary"}} Block autoload {{/link-to}}
+  </div>
+  {{#bs-modal id="blockModal"}}
+    <div class="modal-header">
+      <h5 class="modal-title">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Modal body text goes here.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  {{/bs-modal}}
+  {{bs-modal id="simpleModal" modalTitle="Hello" modalBody='Hi there!'}}
+</div>
+{{outlet}}

@@ -1,1 +1,9 @@
 @import "ember-cli-bootstrap-4/bootstrap";
+
+.highlight{
+  background: #f7f7f9;
+}
+
+.terminal:before{
+  content: "$ ";
+}

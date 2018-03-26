@@ -7,6 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('modal', function() {
+    this.route('simple-autoload');
+    this.route('block-autoload');
+  });
 });
 
 export default Router;
