@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-bootstrap-4-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This addon provides components for using Bootstrap 4 in Ember. Based on ember-cli-bootstrap-4",
   "keywords": [
     "ember-addon",
