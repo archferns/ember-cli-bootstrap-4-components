@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Popovers</h3>
+  <p>Popovers can be created using the <code>\{{bs-popover}}</code> component</p>
+  <h4>Usage</h4>
+  <p>Required properties:</p>
+  <ul>
+    <li>
+      <code>data-content</code> - define the popover content.
+    </li>
+  </ul>
+  <div class="highlight">
+<pre><code>
+  \{{#bs-popover class="btn btn-primary" data-content='A very special popup'}}Simple button with popover\{{/bs-popover}}
+</code>
+</pre>
+  </div>
+  <div class="m-5">
+    {{#bs-popover class="btn btn-primary" data-content='A very special popup'}}Simple button with popover{{/bs-popover}}
+  </div>
+</div>
+{{outlet}}

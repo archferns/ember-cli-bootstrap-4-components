@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-bootstrap-4-components/components/bs-popover';

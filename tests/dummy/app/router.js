@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('simple-autoload');
     this.route('block-autoload');
   });
+  this.route('popover');
 });
 
 export default Router;
