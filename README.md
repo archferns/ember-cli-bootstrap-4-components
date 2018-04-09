@@ -25,7 +25,7 @@ Insert components in your templates where necessary.
 
 * Popover
     ```handlebars
-    {{bs-popover data-content="Some popover content!"}}Popover{{/bs-popover}}
+    {{#bs-popover data-content="Some popover content!"}}Popover{{/bs-popover}}
     ```
 
 ## Documentation
